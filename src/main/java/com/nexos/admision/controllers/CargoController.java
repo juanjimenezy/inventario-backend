@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nexos.admision.models.Cargo;
 import com.nexos.admision.services.CargoService;
 
+@CrossOrigin(origins = {"*"})
 @RequestMapping("/Api")
 @RestController
 public class CargoController {
@@ -23,6 +24,7 @@ public class CargoController {
 	
 	@GetMapping("/cargos")
 	public List<Cargo> listCargo(){
+		
 		return cargoService.findAll();
 	}
 	

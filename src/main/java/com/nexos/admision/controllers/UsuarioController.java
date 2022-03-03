@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nexos.admision.models.Usuario;
 import com.nexos.admision.services.UsuarioService;
 
+@CrossOrigin(origins = {"*"})
 @RequestMapping("/Api")
 @RestController
 public class UsuarioController {

@@ -25,6 +25,7 @@ import com.nexos.admision.models.Usuario;
 import com.nexos.admision.services.ArticuloService;
 import com.nexos.admision.services.UsuarioService;
 
+@CrossOrigin(origins = {"*"})
 @RequestMapping("/Api")
 @RestController
 public class ArticuloController {
