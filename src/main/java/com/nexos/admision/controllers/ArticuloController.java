@@ -60,12 +60,12 @@ public class ArticuloController {
 	}
 	
 	@PostMapping("/articulos")
-	public ResponseEntity<?> created(@RequestParam Long id, @RequestBody Articulo articulo) {
+	public ResponseEntity<?> created(@RequestParam Long idUsuario, @RequestBody Articulo articulo) {
 		Map<String, Object> response = new HashMap<>();
 		Articulo articulor = new Articulo();
 		
 		Date currentDate = new Date();
-		Usuario usuario = usuarioService.findUsuarioById(id);
+		Usuario usuario = usuarioService.findUsuarioById(idUsuario);
 		articulo.setUsernameIng(usuario);
 		articulo.setUsernameAct(usuario);
 		articulo.setFechaIng(currentDate);
