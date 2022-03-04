@@ -87,6 +87,7 @@ public class ArticuloController {
 	
 	@PutMapping("/articulos")
 	public Articulo update(@RequestParam Long id,@RequestParam Long user, @RequestBody Articulo articulo) {
+		 
 		Articulo articuloAct = articuloService.findById(id);
 		Usuario usuario = usuarioService.findUsuarioById(user);
 		

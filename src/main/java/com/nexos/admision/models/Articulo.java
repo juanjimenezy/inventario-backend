@@ -33,11 +33,9 @@ public class Articulo {
 	@Column(name= "cantidad")
 	private int cantidad;
 	
-//	@JsonFormat(pattern="yyyy-MM-dd HH:mm")
 	@Column(name= "fecha_ing")
 	private Date fechaIng;
 	
-//	@JsonFormat(pattern="dd-MM-yyyy HH:mm")
 	@Column(name= "fecha_act")
 	private Date fechaAct;
 
