@@ -18,7 +18,7 @@ public class Cargo {
 	@Column(name="id")
 	private Long id;
 	
-	@Column(name="nombre_cargo")
+	@Column(name="nombre_cargo", nullable=false, unique=true)
 	private String nombreCargo;
 
 	public Long getId() {

@@ -21,10 +21,10 @@ public class Articulo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idArticulo_Sequence")
 	@SequenceGenerator(name = "idArticulo_Sequence", sequenceName = "idarticulo_sequence", allocationSize = 1, initialValue = 7)
-	@Column(name= "id", nullable=false)
+	@Column(name= "id")
 	private Long id;
 	
-	@Column(name= "nombre")
+	@Column(name= "nombre", nullable=false, unique=true)
 	private String nombre;
 	
 	@Column(name= "producto")

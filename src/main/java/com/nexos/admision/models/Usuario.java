@@ -23,7 +23,7 @@ public class Usuario {
 	@SequenceGenerator(name = "idUsuario_Sequence", sequenceName = "idUsuario_Sequence", allocationSize = 1, initialValue = 4)
 	private Long id;
 	
-	@Column(name="username")
+	@Column(name="username", nullable=false, unique=true)
 	private String username;
 	
 	@Column(name="nombre")

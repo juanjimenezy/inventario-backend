@@ -85,18 +85,39 @@ public class ArticuloController {
 		return new ResponseEntity<Articulo>(articulor,HttpStatus.CREATED);
 	}
 	
+	@SuppressWarnings("unused")
 	@PutMapping("/articulos")
-	public Articulo update(@RequestParam Long id,@RequestParam Long user, @RequestBody Articulo articulo) {
+	public ResponseEntity<?> update(@RequestParam Long id,@RequestParam Long user, @RequestBody Articulo articulo) {
+		Map<String, Object> response = new HashMap<>();
+		Articulo articuloAct = null;
+		Usuario usuario = null;
+		try {
+			
+			articuloAct = articuloService.findById(id);
+			usuario = usuarioService.findUsuarioById(user);
+			articuloAct.setNombre(articulo.getNombre());
+			articuloAct.setProducto(articulo.getProducto());
+			articuloAct.setCantidad(articulo.getCantidad());
+			articuloAct.setFechaIng(articulo.getFechaIng());
+			articuloAct.setUsernameAct(usuario);
+			
+			if(articuloAct == null) {
+				response.put("mensaje", "Error al grabar.");
+				return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
+			}else if (usuario == null) {
+				response.put("mensaje", "Error al grabar.");
+				return new ResponseEntity<Map<String, Object>>(response,HttpStatus.NOT_FOUND);
+			}
+			
+		} catch (Exception e) {
+			response.put("mensaje", "Error al grabar.");
+			response.put("error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 		 
-		Articulo articuloAct = articuloService.findById(id);
-		Usuario usuario = usuarioService.findUsuarioById(user);
 		
-		articuloAct.setNombre(articulo.getNombre());
-		articuloAct.setProducto(articulo.getProducto());
-		articuloAct.setCantidad(articulo.getCantidad());
-		articuloAct.setFechaIng(articulo.getFechaIng());
-		articuloAct.setUsernameAct(usuario);
-		return articuloService.save(articuloAct);
+
+		return new ResponseEntity<Articulo>(articuloAct,HttpStatus.CREATED);
 	}
 	
 	
